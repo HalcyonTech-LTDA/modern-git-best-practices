@@ -1,0 +1,5 @@
+{
+  "name": "modern-git-best-practices",
+  "description": "Modern Git engineering best practices, CLI ergonomics (switch, restore, worktree, sparse-checkout), Trunk-Based Development, Conventional & Atomic Commits, interactive rebase, safe force-push (--force-with-lease), conflict resolution (zdiff3, rerere), disaster recovery (reflog, bisect), and SSH/GPG cryptographic signing.",
+  "version": "1.0.0"
+}

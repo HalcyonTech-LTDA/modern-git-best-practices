@@ -1,0 +1,15 @@
+# <type>(<scope>): <subject line max 50 chars in imperative mood>
+# │      │        │
+# │      │        └─> Summary in present imperative ("add", not "added" or "adds"). No period.
+# │      └──────────> Package, feature, or domain area (e.g., auth, billing, api, orders).
+# └─────────────────> feat, fix, refactor, perf, test, build, ci, docs, style, chore.
+#
+# Remember the 50/72 rule: Blank line below, then body wrapped at 72 chars.
+
+# Why is this change needed? What problem does it solve?
+
+# What side-effects, trade-offs, or structural changes were introduced?
+
+# Issue references or Breaking Changes (uncomment if applicable):
+# BREAKING CHANGE: <describe incompatible API/behavior changes>
+# Fixes: #
