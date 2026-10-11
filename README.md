@@ -21,7 +21,7 @@ agy plugin list
 ---
 ## What's Included
 
-#### 1. Contextual Rules & Guardrails (`rules/AGENTS.md`)
+#### 1. Contextual Rules & Guardrails (`rules/modern-git-engineering.md`)
 Automatically enforced whenever Git commands, branching, commits, or repository operations are performed:
 - **Deprecate Overloaded `checkout`**: Mandates `git switch` for branch navigation and `git restore` for index/working tree restoration.
 - **Strict Ban on Blind Force-Push (`git push -f`)**: Mandates `git push --force-with-lease --force-if-includes` to guarantee zero overwritten peer commits.
@@ -77,7 +77,7 @@ modern-git-best-practices/
 ├── plugin.json
 ├── README.md
 ├── rules/
-│   └── AGENTS.md
+│   └── modern-git-engineering.md
 └── skills/
     ├── modern-git-cli-and-workflows/
     │   ├── SKILL.md
