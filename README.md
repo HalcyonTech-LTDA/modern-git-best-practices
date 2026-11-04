@@ -1,51 +1,36 @@
-# Modern Git Best Practices Plugin
+<div align="center">
 
-A comprehensive, production-grade Antigravity plugin providing rules, design guidelines, workflow runbooks, and procedural skills for modern Git engineering: CLI ergonomics (Git 2.23+ `switch` and `restore`), Trunk-Based Development, Conventional Commits v1.0.0, Atomic Commits, interactive rebase, safe force-pushing (`--force-with-lease`), conflict resolution (`zdiff3`, `rerere`), disaster recovery (`reflog`, `bisect`), and modern cryptographic commit signing (SSH keys).
+# Modern Git Best Practices Plugin
+### Modern Git CLI Ergonomics, Trunk-Based Development & Commit Craftsmanship
+
+[![Antigravity Plugin](https://img.shields.io/badge/Antigravity-Plugin%20v1.0.0-4F46E5.svg)](https://antigravity.google)
+[![License: MIT](https://img.shields.io/badge/License-MIT-10B981.svg)](./LICENSE)
+[![Organization](https://img.shields.io/badge/Organization-HalcyonTech--LTDA-black.svg)](https://github.com/HalcyonTech-LTDA)
+
+<p align="center">
+  <b>Modern Git engineering best practices, CLI ergonomics (switch, restore, worktree, sparse-checkout), Trunk-Based Development, Conventional & Atomic Commits, interactive rebase, safe force-push (--force-with-lease), conflict resolution (zdiff3, rerere), disaster recovery (reflog, bisect), and SSH/GPG cryptographic signing.</b>
+</p>
+
+</div>
 
 ---
 
-## Installation
+## Installation & Verification
 
-### Antigravity
+### Antigravity CLI (`agy`)
 
-Install directly in Antigravity via the CLI:
+Install directly into your Antigravity environment via the CLI:
 
 ```bash
 agy plugin install https://github.com/HalcyonTech-LTDA/modern-git-best-practices
 ```
 
-Verify that the plugin is installed and ready:
+Verify that the plugin is active and adheres to the strict official schema:
 
 ```bash
 agy plugin list
+agy plugin validate --strict ./modern-git-best-practices
 ```
-
-### Claude Code
-
-Add the Halcyon Tech marketplace once, then install the plugin:
-
-```text
-/plugin marketplace add HalcyonTech-LTDA/halcyon-plugins
-/plugin install modern-git-best-practices@halcyon-plugins
-```
-
-Skills are namespaced by plugin in Claude Code (`/modern-git-best-practices:<skill-name>`). The guardrails in `rules/` load through the skills in `claude/skills/`.
-
----
-## What's Included
-
-#### 1. Contextual Rules & Guardrails (`rules/modern-git-engineering.md`)
-Automatically enforced whenever Git commands, branching, commits, or repository operations are performed:
-- **Deprecate Overloaded `checkout`**: Mandates `git switch` for branch navigation and `git restore` for index/working tree restoration.
-- **Strict Ban on Blind Force-Push (`git push -f`)**: Mandates `git push --force-with-lease --force-if-includes` to guarantee zero overwritten peer commits.
-- **Never Rewrite Shared/Public History**: Protects shared branches (`main`, `master`, `trunk`, `release/*`) from disruptive rebasing.
-- **Atomic & Conventional Commits**: Enforces single-responsibility, bisectable commits adhering to Conventional Commits v1.0.0 (`type(scope): subject`).
-- **Worktrees Over Stashes**: Encourages `git worktree` to eliminate dirty stash churn and rebuild overhead during context switches.
-- **Patch-Level Staging Discipline**: Encourages hunk-level inspection (`git add -p`) over blind `git add .`.
-- **Zero Secrets in Git History**: Strict rotation first, history purge with `git-filter-repo` second.
-- **Line Ending & Attribute Normalization**: Mandates `.gitattributes` (`* text=auto eol=lf`) and `linguist-generated` for clean reviews.
-- **Team Hook Automation**: Standardizes team-wide verification via `core.hooksPath .githooks`.
-- **Ban Deprecated `filter-branch`**: Enforces modern `git-filter-repo`.
 
 ---
 
@@ -82,54 +67,6 @@ Automatically enforced whenever Git commands, branching, commits, or repository 
 - **Maintenance Script**: Automated, worktree-aware, offline-resilient safe branch cleanup script (`git-cleanup-branches.sh`).
 
 ---
-
-## Directory Layout
-
-```text
-modern-git-best-practices/
-├── plugin.json
-├── README.md
-├── rules/
-│   └── modern-git-engineering.md
-└── skills/
-    ├── modern-git-cli-and-workflows/
-    │   ├── SKILL.md
-    │   ├── references/
-    │   │   ├── modern_cli_tooling.md
-    │   │   ├── branching_and_trunk_based.md
-    │   │   ├── git_worktree_workflows.md
-    │   │   ├── monorepos_sparse_checkout.md
-    │   │   └── gitattributes_and_hygiene.md
-    │   └── resources/
-    │       ├── gitconfig-recommended.ini
-    │       └── gitattributes-recommended.txt
-    ├── modern-git-commit-craftsmanship/
-    │   ├── SKILL.md
-    │   ├── references/
-    │   │   ├── atomic_commits.md
-    │   │   ├── conventional_commits.md
-    │   │   └── interactive_staging_and_hygiene.md
-    │   ├── resources/
-    │   │   └── gitmessage-template.txt
-    │   └── examples/
-    │       └── commit-msg-hook.sh
-    ├── modern-git-rebase-and-history/
-    │   ├── SKILL.md
-    │   └── references/
-    │       ├── rebase_vs_merge.md
-    │       ├── interactive_rebase_and_autosquash.md
-    │       ├── safe_force_push_and_lease.md
-    │       └── conflict_resolution_and_rerere.md
-    └── modern-git-recovery-and-security/
-        ├── SKILL.md
-        ├── references/
-        │   ├── reflog_and_undo_strategies.md
-        │   ├── git_bisect_and_investigation.md
-        │   ├── cryptographic_signing_gpg_ssh.md
-        │   └── secret_hygiene_and_repository_cleanup.md
-        └── scripts/
-            └── git-cleanup-branches.sh
-```
 
 ---
 
@@ -205,7 +142,60 @@ git bisect reset
 
 ---
 
-## License
+---
 
-This project is licensed under the [MIT License](LICENSE) - see the LICENSE file for details.
-Copyright (c) 2026 Halcyon Tech.
+## What's Included (Component Catalog)
+
+### Contextual Rules (`rules/`)
+Automatically loaded to govern and protect project contexts:
+- **[`modern-git-engineering.md`](rules/modern-git-engineering.md)**: Automatically enforces modern Git engineering standards, CLI ergonomics (switch, restore, worktree, sparse-checkout), Trunk-Based Development, Conventional & Atomic Commits, rebase discipline, safe force-push (--force-with-lease), conflict resolution (zdiff3, rerere), disaster recovery (reflog, bisect), and cryptographic signing.
+
+### Procedural Skills (`skills/`)
+On-demand actionable workflows and runbooks:
+- **[`/modern-git-cli-and-workflows`](skills/modern-git-cli-and-workflows/SKILL.md)**: Use this skill when interacting with the Git CLI, navigating branches, discarding or unstaging files, structuring branching strategies (Trunk-Based Development), setting up git worktrees for parallel branch work, configuring sparse-checkouts or partial clones for monorepos, and establishing modern global Git configuration defaults.
+- **[`/modern-git-commit-craftsmanship`](skills/modern-git-commit-craftsmanship/SKILL.md)**: Use this skill when preparing, structuring, and authoring Git commits, enforcing Conventional Commits v1.0.0, crafting atomic and bisectable commits, performing patch-level interactive staging (git add -p), and formulating high-signal commit messages (50/72 rule).
+- **[`/modern-git-rebase-and-history`](skills/modern-git-rebase-and-history/SKILL.md)**: Use this skill when managing branch integration (rebase vs merge), rewriting local commit history, executing interactive rebases (git rebase -i), utilizing autosquash and fixup workflows, safely force-pushing with lease (--force-with-lease), and resolving conflicts using modern 3-way tools and rerere.
+- **[`/modern-git-recovery-and-security`](skills/modern-git-recovery-and-security/SKILL.md)**: Use this skill when recovering lost commits or deleted branches using git reflog, conducting automated binary-search debugging with git bisect, executing non-destructive production rollbacks (git revert), configuring SSH or GPG cryptographic commit signing, and sanitizing leaked secrets with git-filter-repo.
+
+---
+
+## Directory Hierarchy
+
+```text
+modern-git-best-practices/
+├── plugin.json              # Official Antigravity manifest (schema v1)
+├── LICENSE                  # MIT License (Copyright 2026 HalcyonTech LTDA)
+├── .gitignore               # System ignores & installed_version.json exclusions
+├── .gitattributes           # Deterministic line endings (* text=auto eol=lf)
+├── README.md                # Golden Standard documentation & runbook
+├── assets/
+│   └── logo.svg             # Official Halcyon Tech corporate vector symbol
+├── rules/                   # Contextual rules discovered automatically
+│   └── modern-git-engineering.md
+├── skills/                  # Actionable procedural skills (Progressive Disclosure)
+│   └── modern-git-cli-and-workflows/
+│       └── SKILL.md
+│   └── modern-git-commit-craftsmanship/
+│       └── SKILL.md
+│   └── modern-git-rebase-and-history/
+│       └── SKILL.md
+│   └── modern-git-recovery-and-security/
+│       └── SKILL.md
+```
+
+---
+
+## 💡 Prompt Recipes & Use Cases
+
+```markdown
+- "Guide an interactive rebase and clean up commit history with Conventional Commits"
+- "Configure modern Git workflows, worktrees, and safe force-push protections"
+- "Diagnose Git merge conflicts or recover lost commits using git reflog"
+```
+
+---
+
+## 📄 License & Corporate Governance
+
+Distributed under the **MIT License**. Copyright (c) 2026 **HalcyonTech LTDA**.  
+Engineered with precision and excellence by [Halcyon Tech](https://github.com/HalcyonTech-LTDA).
